@@ -6,18 +6,28 @@
 
 {% block content %}
 
-    <div class="row">
-        <div class="col-sm-4">
+
+
+
+
+<div class="container">
+
             <h4 class="text-centre alert alert-info">Owner Add Your Room</h4>
-            <form action="" method="POST">
+            <form action="" method="POST" enctype="multipart/form-data">
             {% csrf_token %}
-            {{form.as_p}}
-            <input type="submit" class="btn btn-success" value="ADD">
+               {{form.as_p}}
+            <td><input type="submit" class="btn btn-success" value="POST YOUR ROOM"></td>
+
+
             </form>
-        </div>
-    </div>
+
+
+</div>
+
+
 
 {% endblock content %}
+
 
 
 

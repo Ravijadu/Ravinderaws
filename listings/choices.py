@@ -25,7 +25,7 @@ price_choices = {
 }
 
 state_choices = {
-        '1' : 'RAJASTHAN',
+        'RAJASTHAN' : 'RAJASTHAN',
 }
 district_choices = {
 
@@ -56,7 +56,7 @@ district_choices = {
         'RPZ': 'Pratapgarh',
         'RSD': 'Rajsamand',
         'SWM': 'Sawai Madhopur',
-        'SIKR': 'Sikar',
+        'Sikar': 'Sikar',
         'SIRO': 'Sirohi',
         'SGGN': 'Sri Ganganagar',
         'TK': 'Tonk',

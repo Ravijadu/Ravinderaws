@@ -1,4 +1,5 @@
 {% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,26 +15,37 @@
   <link rel="stylesheet" href="{% static 'css/style.css' %}">
   <!-- Lightbox -->
   <link rel="stylesheet" href="{% static 'css/lightbox.min.css' %}">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
 
   <title>SPAL {% block title %}{% endblock %}</title>
   <link rel="icon" type="image/x-icon" href="{% static 'img\logo.ico' %}">
+   <style>
+.tdStyle
+{
+background-image:url('{{ STATIC_URL }}media/spal.jpg');
+background-repeat:no-repeat;
+background-size:100%;
+}
+</style>
+
 </head>
 
 <body>
-  <!-- Top Bar -->
-  {% include 'partials/_topbar.html' %}
+<div class="tdStyle">
   <!-- NavBar -->
   {% include 'partials/_navbar.html' %}
-    <!-- Main Content -->
+  <!-- Top Bar -->
+
   {% block content %} {% endblock %}
   <!-- Footer -->
   {% include 'partials/_footer.html' %}
-  
+
 
   <script src="{% static 'js/jquery-3.3.1.min.js' %} "></script>
   <script src="{% static 'js/bootstrap.bundle.min.js' %} "></script>
   <script src="{% static 'js/lightbox.min.js' %} "></script>
   <script src="{% static 'js/main.js' %} "></script>
+</div>
 </body>
 
 </html>

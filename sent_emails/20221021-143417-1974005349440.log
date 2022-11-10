@@ -1,0 +1,25 @@
+Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+Subject: Password reset on localhost:8000
+From: webmaster@localhost
+To: rk20021999@gmail.com
+Date: Fri, 21 Oct 2022 09:04:17 -0000
+Message-ID: <166634305745.18932.10239638385236914872@Ravinder>
+
+
+You're receiving this email because you requested a password reset for your user account at localhost:8000.
+
+Please go to the following page and choose a new password:
+
+http://localhost:8000/accounts/reset/Mg/bdnf55-59d04122850efc6605c67404f46bb894/
+
+Your username, in case you’ve forgotten: ravijadu
+
+Thanks for using our site!
+
+The localhost:8000 team
+
+
+
+-------------------------------------------------------------------------------

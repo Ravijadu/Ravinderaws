@@ -1,6 +1,8 @@
 from django.shortcuts import get_object_or_404, render
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from .choices import price_choices, bedroom_choices,district_choices,state_choices
+from django.contrib.auth.decorators import login_required
+
 
 from .models import Listing
 
@@ -18,6 +20,8 @@ def index(request):
 
   return render(request, 'listings/listings.html', context)
 
+
+@login_required(login_url='login')
 def listing(request, listing_id):
   listing = get_object_or_404(Listing, pk=listing_id)
 
@@ -30,42 +34,30 @@ def listing(request, listing_id):
 def search(request):
   queryset_list = Listing.objects.order_by('-list_date')
 
-  # Keywords
-  if 'keywords' in request.GET:
-    keywords = request.GET['keywords']
-    if keywords:
-      queryset_list = queryset_list.filter(description__icontains=keywords)
+  # title
+  if 'title' in request.GET:
+    title = request.GET['title']
+    if title:
+      queryset_list = queryset_list.filter(title__icontains=title) | queryset_list.filter(state__icontains=title) | queryset_list.filter(district__icontains=title)
+
 
 
   # State
   if 'state' in request.GET:
     state = request.GET['state']
     if state:
-      queryset_list = queryset_list.filter(state__iexact=state)
+      queryset_list = queryset_list.filter(state=state)
 
   # district
   if 'district' in request.GET:
     district= request.GET['district']
     if district:
-      queryset_list = queryset_list.filter(district__iexact=district)
+      queryset_list = queryset_list.filter(district=district)
 
-  # Bedrooms
-  if 'bedrooms' in request.GET:
-    bedrooms = request.GET['bedrooms']
-    if bedrooms:
-      queryset_list = queryset_list.filter(bedrooms__lte=bedrooms)
-
-  # Price
-  if 'price' in request.GET:
-    price = request.GET['price']
-    if price:
-      queryset_list = queryset_list.filter(price__lte=price)
 
   context = {
     'state_choices' : state_choices,
     'district_choices': district_choices,
-    'bedroom_choices': bedroom_choices,
-    'price_choices': price_choices,
     'listings': queryset_list,
     'values': request.GET,
   }

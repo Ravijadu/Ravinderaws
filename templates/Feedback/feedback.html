@@ -1,10 +1,51 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends 'base.html' %}
+
+{% load humanize %}
+
+{% block title %} | Feedback {% endblock %}
+
+{% block content %}
+
+
+
+
+<div class="container">
+
+            <h4 class="text-centre alert alert-info">Feedback Please</h4>
+            <form action="" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+
+
+
+
+                         <div class="mb-3 mt-3">
+                             <label for="name" class="form-label">Name:</label>
+                             <input type="text" class="form-control" id="name" placeholder="Enter Name" name="name" required>
+                          </div>
+
+                         <div class="mb-3 mt-3">
+                             <label for="phone" class="form-label">Phone:</label>
+                             <input type="tel" class="form-control" id="phone" placeholder="Enter Phone" name="phone" required>
+                          </div>
+
+                          <div class="mb-3 mt-3">
+                             <label for="email" class="form-label">Email:</label>
+                             <input type="email" class="form-control" id="email" placeholder="Enter email" name="email" required>
+                          </div>
+
+                       <div class="mb-3">
+                             <label for="Comment">Comments:</label>
+                           <textarea class="form-control" rows="5" id="comment" name="Comment"></textarea>
+                       </div>
+
+
+
+               <td><input type="submit" class="btn btn-success" value="Submit"></td>
+            </form>
+</div>
+
+
+
+
+
+  {% endblock %}

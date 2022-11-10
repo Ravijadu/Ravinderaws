@@ -33,13 +33,16 @@ SECRET_KEY = ['SECURITY_KEY']
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['192.168.1.7','127.0.0.1', 'localhost','*']
 
-
+CSRF_TRUSTED_ORIGINS = [
+    'https://book.studentlodge.in',
+]
 # Application definition
 
 INSTALLED_APPS = [
     'OwnerPanel.apps.OwnerpanelConfig',
+    'Feedback.apps.FeedbackConfig',
     'pages.apps.PagesConfig',
     'listings.apps.ListingsConfig',
     'realtors.apps.RealtorsConfig',
@@ -52,11 +55,14 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.humanize',
+    'rest_framework',
+
 
 ]
 
 
 MIDDLEWARE = [
+
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.security.SecurityMiddleware',
@@ -95,9 +101,12 @@ WSGI_APPLICATION = 'btre.wsgi.application'
 DATABASES = {
 
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3')
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'django',
+        'USER': 'root',
+        'PASSWORD':'',
+        'HOST':'localhost',
+        'PORT':'3306',
 
      }
 }
@@ -146,9 +155,12 @@ STATICFILES_DIRS = [
 ]
 
 
+
 # Media Folder Settings
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
+
+
 
 # Messages
 from django.contrib.messages import constants as messages
@@ -160,6 +172,14 @@ try:
     from .local_settings import *
 except ImportError:
     pass
+
+
+LOGIN_URL ='/accounts/login'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'spalservicespvtltd@gmail.com'
+EMAIL_HOST_PASSWORD = 'zzigczjygxapxjnp'
 
 
 
